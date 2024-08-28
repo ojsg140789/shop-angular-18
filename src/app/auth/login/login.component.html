@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto col-width-auto text-center">
+        <div id="cardRegister" class="card text-center">
+            <div class="card-header">
+                <p>Login</p>
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" [formGroup]="loginForm" novalidate>
+                    <div class="col-md-12">
+                        <label for="validationCustomEmail" class="form-label">Correo electrónico</label>
+                        <div class="input-group has-validation">
+                            <input type="email" class="form-control" id="validationCustomEmail"
+                                aria-describedby="inputGroupPrepend" formControlName="email"
+                                autocomplete="off"
+                                name="email"
+                                [ngClass]="{'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+                                @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched){
+                                    <div class="invalid-feedback">
+                                        Correo inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomPassword" class="form-label">Contraseña</label>
+                        <div class="input-group has-validation">
+                            <input type="password" class="form-control" id="validationCustomPassword"
+                                aria-describedby="inputGroupPrepend" formControlName="password"
+                                autocomplete="off"
+                                name="password"
+                                [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+                                @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+                                    <div class="invalid-feedback">
+                                        Please choose a password.
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" id="btnLogin" class="btn btn-secondary" (click)="login()" [disabled]="loginForm.invalid">Entrar</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-link" href="javascript:void(0)" [routerLink]="['/register']">Registrarse</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+#card-item {
+    max-width: 20rem;
+    transition: transform 0.3s ease;
+}
+
+#card-item:hover {
+    transform: scale(1.05);
+}

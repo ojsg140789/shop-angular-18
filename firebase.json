@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/sps-web-shop-omar-jorge-soto-garcia/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

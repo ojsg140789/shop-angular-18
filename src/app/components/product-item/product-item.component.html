@@ -1,0 +1,25 @@
+<div id="card-item" class="card">
+    <img [src]="item.imgUrl" class="card-img-top" alt="..." style="height: 200px;">
+    <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.price | currency }}</p>
+        <p>
+            @if(item.calificacion == 1 || item.calificacion == 2 || item.calificacion == 3 || item.calificacion == 4 || item.calificacion ==5) {
+                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+            }
+            @if(item.calificacion == 2 || item.calificacion == 3 || item.calificacion == 4 || item.calificacion == 5) {
+                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+            }
+            @if(item.calificacion == 3 || item.calificacion == 4 || item.calificacion ==5) {
+                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+            }
+            @if(item.calificacion == 4 || item.calificacion == 5) {
+                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+            }
+            @if(item.calificacion == 5) {
+                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+            }
+        </p>
+        <a href="javascript:void(0)" class="btn btn-secondary" (click)="detalle(item.id)">Detalle</a>
+    </div>
+</div>

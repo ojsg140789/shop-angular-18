@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto col-width-auto text-center">
+        <div id="cardRegister" class="card text-center">
+            <div class="card-header">
+                Registro
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" [formGroup]="registerForm" novalidate>
+                    <div class="col-md-12">
+                        <label for="validationCustomUsername" class="form-label">Nombre</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomUsername"
+                                aria-describedby="inputGroupPrepend" formControlName="username"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': registerForm.get('username')?.invalid && registerForm.get('username')?.touched}">
+                                @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
+                                    <div class="invalid-feedback">
+                                        Nombre inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomEmail" class="form-label">Correo electrónico</label>
+                        <div class="input-group has-validation">
+                            <input type="email" class="form-control" id="validationCustomEmail"
+                                aria-describedby="inputGroupPrepend" formControlName="email"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
+                                @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+                                    <div class="invalid-feedback">
+                                        Correo inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomPassword" class="form-label">Contraseña</label>
+                        <div class="input-group has-validation">
+                            <input type="password" class="form-control" id="validationCustomPassword"
+                                aria-describedby="inputGroupPrepend" formControlName="password"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+                                @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
+                                    <div class="invalid-feedback">
+                                        Please choose a password.
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-secondary" (click)="register()" [disabled]="registerForm.invalid">Registrar</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-link" href="javascript:void(0)" [routerLink]="['/login']">Iniciar Sesión</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer {
+    background-color: #4D4D4D;
+    color: #E0E0E0;
+    padding: 20px;
+    text-align: center;
+}
+
+#header {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+#logoImg {
+    width: 200px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.btn-primary {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #E60000;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+.btn-secondary:hover {
+    background-color: #6c757d;
+}
+
+.icon-primary {
+    color: #666666;
+}
+
+.icon-secondary {
+    color: #FFFFFF;
+}
+
+.content-area {
+    background-color: #FAFAFA;
+    color: #000000;
+}
+
+.border-default {
+    border-color: #666666;
+}
+
+.accent {
+    color: #FF6666;
+}
+
+.col-width-auto {
+    width: auto;
+}

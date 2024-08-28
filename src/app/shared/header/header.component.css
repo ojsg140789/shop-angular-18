@@ -1,0 +1,11 @@
+#btnCart .badge {
+    margin-left: 5px;
+    position: relative;
+    top: -1px;
+    color: seagreen !important;
+    background: #ffffff !important;
+}
+
+.header-container {
+    min-height: 100px;
+}
