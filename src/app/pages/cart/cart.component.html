@@ -22,6 +22,7 @@
                         }
                         @if(totalPrice > 0) {
                             <h3 class="mt-4">Total: {{ totalPrice | currency }}</h3>
+                            <button class="btn btn-secondary" (click)="comprar()">Comprar</button>
                         }
                         @if(cartItems.length === 0) {
                             <h3>Carrito de compras vacio</h3>

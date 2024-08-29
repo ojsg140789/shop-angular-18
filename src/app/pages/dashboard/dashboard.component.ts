@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
 
 import { ProductsService } from '@app/services/products.service';

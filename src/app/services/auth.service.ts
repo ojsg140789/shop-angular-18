@@ -18,10 +18,10 @@ export class AuthService {
   private user = signal<UserInterface | null>(null);
 
   constructor() {
-    // Leer el token de localStorage cuando se inicializa el servicio
-    const token = localStorage.getItem('jwtToken');
-    if (token) {
-      this.currentUserSignal.set(token); // Establecer el token en el signal si existe
+    const user = localStorage.getItem('jwtToken');
+    if (user) {
+      let _user = JSON.parse(user);
+      this.currentUserSignal.set(_user.token);
     }
   }
 
@@ -32,12 +32,10 @@ export class AuthService {
   login( loginRequest: LoginRequest ): Observable<any> {
     return this.http.post(`${environment.baseUrl}/auth/login`, loginRequest).pipe(
       tap((response: any) => {
-        const token = response.token;
-        if (token) {
-          localStorage.setItem('jwtToken', token);
-          this.currentUserSignal.set(token);
-          this.router.navigate(['/']);
-        }
+        const user = response;
+        localStorage.setItem('jwtToken', JSON.stringify(user));
+        this.currentUserSignal.set(user.token);
+        this.router.navigate(['/']);
       })
     );
   }
@@ -55,8 +53,4 @@ export class AuthService {
   getUser() {
     return this.currentUserSignal();
   }
-
-  // public onAuthStateChanged(callback: (user: any | null) => void) {
-  //   return onAuthStateChanged(this.firebaeAuth, callback);
-  // }
 }

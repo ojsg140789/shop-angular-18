@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { CartItem } from '@app/models/cart-item';
+import { environment } from '@environments/environment';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-
+  http = inject(HttpClient);
   private cartSubject = new BehaviorSubject<CartItem[]>([]);
   cart$ = this.cartSubject.asObservable();
 
@@ -50,4 +52,8 @@ export class CartService {
   clearCart(): void {
     this.cartSubject.next([]);
   }
+
+  comprar( compra: any ): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/compras`, compra);
+  } 
 }
