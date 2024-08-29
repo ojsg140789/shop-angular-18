@@ -24,11 +24,11 @@ export class ProductsService {
     return this.http.post(`${environment.baseUrl}/articulos`, producto);
   }
 
-  updateProducto(id: number, producto: any): Observable<any> {
+  updateProducto(id: string, producto: any): Observable<any> {
     return this.http.put(`${environment.baseUrl}/articulos/${id}`, producto);
   }
 
-  deleteProducto(id: number): Observable<any> {
+  deleteProducto(id: string): Observable<any> {
     return this.http.delete(`${environment.baseUrl}/articulos/${id}`);
   }
 

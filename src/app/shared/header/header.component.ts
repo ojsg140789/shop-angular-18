@@ -32,4 +32,13 @@ export class HeaderComponent {
   logout() {
     this.authService.logout();
   }
+
+  perfil() {
+    const user = localStorage.getItem('jwtToken');
+    if(user) {
+      let _user = JSON.parse(user);
+      this.router.navigate(['/cliente', _user.id]);
+    }
+
+  }
 }

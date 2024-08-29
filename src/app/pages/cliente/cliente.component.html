@@ -1,1 +1,92 @@
-<p>cliente works!</p>
+<div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto col-width-auto text-center">
+        <div id="cardRegister" class="card text-center">
+            <div class="card-header">
+                Perfil
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" [formGroup]="clienteForm" novalidate>
+                    <div class="col-md-12">
+                        <label for="validationCustomNombre" class="form-label">Nombre</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomNombre"
+                                aria-describedby="inputGroupPrepend" formControlName="nombre"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': clienteForm.get('nombre')?.invalid && clienteForm.get('nombre')?.touched}">
+                                @if(clienteForm.get('nombre')?.invalid && clienteForm.get('nombre')?.touched){
+                                    <div class="invalid-feedback">
+                                        Nombre inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomApellido" class="form-label">Apellido</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomApellido"
+                                aria-describedby="inputGroupPrepend" formControlName="apellido"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': clienteForm.get('apellido')?.invalid && clienteForm.get('apellido')?.touched}">
+                                @if(clienteForm.get('apellido')?.invalid && clienteForm.get('apellido')?.touched){
+                                    <div class="invalid-feedback">
+                                        Apellido inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomDireccion" class="form-label">Direccion</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomDireccion"
+                                aria-describedby="inputGroupPrepend" formControlName="direccion"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': clienteForm.get('direccion')?.invalid && clienteForm.get('direccion')?.touched}">
+                                @if(clienteForm.get('direccion')?.invalid && clienteForm.get('direccion')?.touched){
+                                    <div class="invalid-feedback">
+                                        Direccion inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomCorreo" class="form-label">Correo electrónico</label>
+                        <div class="input-group has-validation">
+                            <input type="correo" class="form-control" id="validationCustomCorreo"
+                                aria-describedby="inputGroupPrepend" formControlName="correo"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': clienteForm.get('correo')?.invalid && clienteForm.get('correo')?.touched}">
+                                @if(clienteForm.get('correo')?.invalid && clienteForm.get('correo')?.touched){
+                                    <div class="invalid-feedback">
+                                        Correo inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomPassword" class="form-label">Contraseña</label>
+                        <div class="input-group has-validation">
+                            <input type="password" class="form-control" id="validationCustomPassword"
+                                aria-describedby="inputGroupPrepend" formControlName="password"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': clienteForm.get('password')?.invalid && clienteForm.get('password')?.touched}">
+                                @if(clienteForm.get('password')?.invalid && clienteForm.get('password')?.touched){
+                                    <div class="invalid-feedback">
+                                        Password inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-secondary" (click)="guardar()" [disabled]="clienteForm.invalid">Guardar</button>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" (click)="eliminar()" [disabled]="clienteForm.invalid">Eliminar Perfil</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-link" href="javascript:void(0)" [routerLink]="['/']">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

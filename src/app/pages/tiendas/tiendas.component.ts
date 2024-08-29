@@ -82,6 +82,6 @@ export class TiendasComponent {
   }
 
   goBack() {
-    this.router.navigate(['/' ]);
+    this.router.navigate(['/']);
   }
 }

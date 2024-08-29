@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -20,6 +20,7 @@ export class ProductDetailComponent {
   route = inject(ActivatedRoute);
   productService = inject(ProductsService);
   cartService = inject(CartService);
+  router = inject(Router);
   id: string = '';
   product: Product = {    
     codigo: '',
@@ -70,6 +71,38 @@ export class ProductDetailComponent {
       title: "Producto Agregado",
       text: "",
       icon: "success"
+    });
+  }
+
+  editar( product: Product ) {
+    this.router.navigate(['/producto', product.id]);
+  }
+  
+  eliminar( product: Product ) {
+    Swal.fire({
+      title: "¿Eliminar?",
+      showDenyButton: true,
+      confirmButtonText: "Eliminar",
+      denyButtonText: `Cancelar`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.deleteProducto(this.id).subscribe({
+          next: () => {
+            this.router.navigate(['/']);
+          },
+          error: () => {
+            let _message = {
+              title: 'Error',
+              text: 'Ocurrio un error en el servicio'
+            }
+            Swal.fire({
+              title: _message.title,
+              text: _message.text,
+              icon: 'info'
+            });
+          }
+        });
+      }
     });
   }
 }

@@ -1,1 +1,108 @@
-<p>producto works!</p>
+<div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto col-width-auto text-center">
+        <div id="card" class="card text-center">
+            <div class="card-header">
+                Producto
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" [formGroup]="productoForm" novalidate>
+                    <div class="col-md-12">
+                        <label for="validationCustomCodigo" class="form-label">Codigo</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomCodigo"
+                                aria-describedby="inputGroupPrepend" formControlName="codigo"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': productoForm.get('codigo')?.invalid && productoForm.get('codigo')?.touched}">
+                                @if(productoForm.get('codigo')?.invalid && productoForm.get('codigo')?.touched){
+                                    <div class="invalid-feedback">
+                                        Codigo inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomDescripcion" class="form-label">Descripcion</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomDescripcion"
+                                aria-describedby="inputGroupPrepend" formControlName="descripcion"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched}">
+                                @if(productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched){
+                                    <div class="invalid-feedback">
+                                        Descripcion inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomPrecio" class="form-label">Precio</label>
+                        <div class="input-group has-validation">
+                            <input type="number" class="form-control" id="validationCustomPrecio"
+                                aria-describedby="inputGroupPrepend" formControlName="precio"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched}">
+                                @if(productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched){
+                                    <div class="invalid-feedback">
+                                        Precio inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomImagen" class="form-label">Imagen</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomImagen"
+                                aria-describedby="inputGroupPrepend" formControlName="imagen"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched}">
+                                @if(productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched){
+                                    <div class="invalid-feedback">
+                                        Imagen inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomStock" class="form-label">Stock</label>
+                        <div class="input-group has-validation">
+                            <input type="number" class="form-control" id="validationCustomStock"
+                                aria-describedby="inputGroupPrepend" formControlName="stock"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': productoForm.get('stock')?.invalid && productoForm.get('stock')?.touched}">
+                                @if(productoForm.get('stock')?.invalid && productoForm.get('stock')?.touched){
+                                    <div class="invalid-feedback">
+                                        Stock inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomTienda" class="form-label">Tienda</label>
+                        <div class="input-group has-validation">
+                            <select class="form-select" id="validationCustom04" 
+                            [ngClass]="{'is-invalid': productoForm.get('tiendaId')?.invalid && productoForm.get('tiendaId')?.touched}"
+                            formControlName="tiendaId"
+                            required>
+                                <option selected disabled value="">Escoge...</option>
+                                @for(tienda of tiendas; track tienda.id) {
+                                    <option [ngValue]="tienda.id">{{tienda.sucursal}}</option>
+                                }
+                            </select>
+                            @if(productoForm.get('tiendaId')?.invalid && productoForm.get('tiendaId')?.touched){
+                                <div class="invalid-feedback">
+                                    Tienda inválida
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-secondary" (click)="guardar()" [disabled]="productoForm.invalid">Guardar</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-link" href="javascript:void(0)" (click)="goBack()">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
