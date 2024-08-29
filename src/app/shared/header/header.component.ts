@@ -30,7 +30,6 @@ export class HeaderComponent {
   }
 
   logout() {
-    //this.authService.logout();
-    this.router.navigateByUrl('/login');
+    this.authService.logout();
   }
 }

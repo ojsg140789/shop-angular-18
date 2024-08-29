@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Product } from '@app/models/product';
 import { ProductsService } from '@app/services/products.service';
 import { CartService } from '@app/services/cart.service';
+import { CartItem } from '@app/models/cart-item';
 
 @Component({
   selector: 'app-product-detail',
@@ -20,46 +21,50 @@ export class ProductDetailComponent {
   productService = inject(ProductsService);
   cartService = inject(CartService);
   id: string = '';
-  product: Product = {
-    calificacion: 0,
-    categoria: '',
-    description: '',
+  product: Product = {    
+    codigo: '',
+    descripcion: '',
     id: '',
-    imgUrl: '',
-    name: '',
-    price: 0
+    imagen: '',
+    stock: '',
+    precio: 0,
+    tiendaId: 0
   };
 
   ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //   this.id = params['id'];
-    //   this.productService.getProductById(this.id).subscribe({
-    //     next: (product) => {
-    //       this.product = product;
-    //     },
-    //     error: () => {
-    //       let _message = {
-    //         title: 'Error',
-    //         text: 'Ocurrio un error en el servicio'
-    //       }
-    //       Swal.fire({
-    //         title: _message.title,
-    //         text: _message.text,
-    //         icon: 'info'
-    //       });
-    //     }
-    //   });
-    // });
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.productService.getProductoById(this.id).subscribe({
+        next: (product) => {
+          this.product = product;
+        },
+        error: () => {
+          let _message = {
+            title: 'Error',
+            text: 'Ocurrio un error en el servicio'
+          }
+          Swal.fire({
+            title: _message.title,
+            text: _message.text,
+            icon: 'info'
+          });
+        }
+      });
+    });
   }
 
   agregarCarrito( product: Product) {
     let cartProduct = {
       id: product.id,
-      name: product.name,
-      price: product.price,
-      url: product.imgUrl,
+      codigo: product.codigo,
+      descripcion: product.descripcion,
+      precio: product.precio,
+      imagen: product.imagen,
+      stock: product.stock,
+      tiendaId: product.tiendaId,
       quantity: 1
     };
+    
     this.cartService.addToCart(cartProduct);
     Swal.fire({
       title: "Producto Agregado",

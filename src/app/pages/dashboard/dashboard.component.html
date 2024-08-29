@@ -1,95 +1,13 @@
 <div class="row">
-    <div id="filters" class="col-md-12 col-sm-12 my-1">
-        <p class="text-end">
-            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
-                <fa-icon [icon]="faFilter" class="icon-primary"></fa-icon>Filtros
-            </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <div class="row">
-                    <div class="col-md-4 col-sm-12 my-1 text-center">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <label for="categoria">Categoria</label>
-                                <select id="categoria" class="form-select form-select-sm"
-                                    aria-label="Small select example"
-                                    [(ngModel)]="selectedCategoria">
-                                    <option value="" disabled selected>-- Selecciona --</option>
-                                    @for( categoria of categorias; track categoria) {
-                                    <option [value]="categoria">{{categoria}}</option>
-                                    }
-                                </select>
-                            </div>
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <label for="orden">Orderna por:</label>
-                                <select id="categoria" class="form-select form-select-sm"
-                                    aria-label="Small select example"
-                                    [(ngModel)]="sortByPrice">
-                                    <option value="" disabled selected>-- Selecciona --</option>
-                                    @for( o of order; track o) {
-                                    <option [value]="o.value">{{o.text}}</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12 my-1 text-center">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <label for="categoria">Precio desde</label>
-                                <input class="form-control form-control-sm" type="number" 
-                                        aria-label=".form-control-sm example"
-                                        [(ngModel)]="minPrice">
-                            </div>
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <label for="orden">Precio hasta</label>
-                                <input class="form-control form-control-sm" type="number" 
-                                        aria-label=".form-control-sm example"
-                                        [(ngModel)]="maxPrice">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12 my-1 text-center">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <label for="categoria">Calificación</label>
-                                <select id="categoria" class="form-select form-select-sm"
-                                    aria-label="Small select example"
-                                    [(ngModel)]="minCalificacion">
-                                    <option value="" disabled selected>-- Selecciona --</option>
-                                    @for( calificacion of calificaciones; track calificacion) {
-                                    <option [value]="calificacion.value">{{calificacion.text}}</option>
-                                    }
-                                </select>
-                            </div>
-                            <div class="col-md-12 col-sm-12 my-1 text-center">
-                                <p class="m-1 p-1">
-                                    <button type="button" class="btn btn-sm btn-secondary" 
-                                        (click)="filterProducts(selectedCategoria, sortByPrice, minPrice, maxPrice, minCalificacion)"
-                                        [disabled]="!selectedCategoria && !sortByPrice && !minPrice && !maxPrice && !minCalificacion">
-                                        Aplicar
-                                    </button>
-                                </p>
-                                <p class="m-0 p-0">
-                                    <button type="button" class="btn btn-sm btn-primary" (click)="cleanFilterProducts()">
-                                        Limpiar
-                                    </button>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-md-12 col-sm-12 my-1">
+        <h3>Productos</h3>
     </div>
-    @for( product of filteredProducts; track product.id) {
+    @for( product of products; track product.id) {
     <div id="product-item-container" class="col-md-4 col-sm-12 my-1">
         <app-product-item [item]="product"></app-product-item>
     </div>
     }
-    @if(filteredProducts.length == 0) {
+    @if(products.length == 0) {
         <h3>Sin productos</h3>
     }
 </div>

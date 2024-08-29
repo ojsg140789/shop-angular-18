@@ -24,11 +24,11 @@ export class CartService {
 
   getCartTotalPrice(): Observable<number> {
     return this.cart$.pipe(
-      map(items => items.reduce((acc, item) => acc + item.price * item.quantity, 0))
+      map(items => items.reduce((acc, item) => acc + item.precio * item.quantity, 0))
     );
   }
 
-  addToCart(item: CartItem): void {
+  addToCart(item: any): void {
     const currentCart = this.cartSubject.value;
     const itemIndex = currentCart.findIndex(cartItem => cartItem.id === item.id);
 
@@ -41,9 +41,9 @@ export class CartService {
     this.cartSubject.next([...currentCart]);
   }
 
-  removeFromCart(itemId: string): void {
+  removeFromCart(itemR: any): void {
     const currentCart = this.cartSubject.value;
-    const updatedCart = currentCart.filter(item => item.id !== itemId);
+    const updatedCart = currentCart.filter(item => item.id !== itemR.id);
     this.cartSubject.next([...updatedCart]);
   }
 

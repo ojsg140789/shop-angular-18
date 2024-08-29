@@ -5,17 +5,17 @@
                 <a type="button" class="btn btn-link" href="javascript:void(0)" [routerLink]="['/dashboard']">Regresar</a>
                 <div class="row">
                     <div class="col-md-6 col-sm-12 mx-auto text-center my-auto">
-                        <img id="imgDetail" [src]="product.imgUrl" alt="product">
+                        <img id="imgDetail" [src]="product.imagen" alt="product">
                     </div>
                     <div class="col-md-6 col-sm-12 mx-auto text-center my-auto">
-                        <h3>{{product.name}}</h3>
-                        <h4>{{product.price | currency}}</h4>
+                        <h3>{{product.codigo}}</h3>
+                        <h4>{{product.precio| currency}}</h4>
                         <button type="button" class="btn btn-secondary" (click)="agregarCarrito(product)">Agregar a carrito</button>
                     </div>
                 </div>
                 <hr>
                 <div class="col-md-12 col-sm-12 mx-auto">
-                    {{product.description}}
+                    {{product.descripcion}}
                 </div>
             </div>
         </div>

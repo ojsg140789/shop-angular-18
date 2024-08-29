@@ -12,9 +12,9 @@
                     <div class="col-md-12 col-sm-12">
                         @for(item of cartItems; track item.id; let last = $last) {
                             <div>
-                                <img [src]="item.url" alt="" id="imgCart">
-                                <p>{{ item.name }} - {{ item.quantity }} x {{ item.price | currency }} = {{ item.quantity*item.price | currency }}</p>
-                                <button class="btn btn-primary" (click)="removeItem(item.id)">Eliminar</button>
+                                <img [src]="item.imagen" alt="" id="imgCart">
+                                <p>{{ item.codigo }} - {{ item.quantity }} x {{ item.precio | currency }} = {{ item.quantity*item.precio | currency }}</p>
+                                <button class="btn btn-primary" (click)="removeItem(item)">Eliminar</button>
                             </div>
                             @if(!last){
                                 <hr>

@@ -29,8 +29,8 @@ export class CartComponent {
     });
   }
 
-  removeItem(itemId: string): void {
-    this.cartService.removeFromCart(itemId);
+  removeItem(item: CartItem): void {
+    this.cartService.removeFromCart(item);
   }
 
   goBack() {

@@ -18,7 +18,7 @@ export class ProductItemComponent {
   @Input() item!: Product;
   faStar = faStar;
 
-  detalle(id: string) {
-    this.router.navigate(['/detail', id ]);
+  detalle(producto: Product) {
+    this.router.navigate(['/detail', producto.id ]);
   }
 }

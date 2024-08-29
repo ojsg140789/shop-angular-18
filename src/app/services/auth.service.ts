@@ -42,12 +42,11 @@ export class AuthService {
     );
   }
 
-  // logout(): Observable<void> {
-  //   const promise = signOut(this.firebaeAuth).then(() => {
-  //     this.user.set(null);
-  //   });
-  //   return from(promise);
-  // }
+  logout(): void {
+    localStorage.removeItem('jwtToken');
+    this.currentUserSignal.set(null);
+    this.router.navigate(['/login']);
+  }
 
   isLoggedIn() {
     return this.user() !== null;

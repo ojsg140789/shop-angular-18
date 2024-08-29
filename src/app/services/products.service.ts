@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-// import { collection, collectionData, doc, docData, Firestore } from '@angular/fire/firestore';
 import { Product } from '@app/models/product';
+import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,18 +9,28 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  // firestore = inject(Firestore);
+  http = inject(HttpClient);
 
   constructor() {}
 
-  // getProducts(): Observable<Product[]> {
-  //   const productsCollection = collection(this.firestore, 'products');
-  //   return collectionData(productsCollection, { idField: 'id' });
-  // }
+  getAllProductos(): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/articulos`);
+  }
 
-  // getProductById(id: string): Observable<Product> {
-  //   const productDocRef = doc(this.firestore, `products/${id}`);
-  //   return docData(productDocRef, { idField: 'id' });
-  // }
+  getProductoById(id: string): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/articulos/${id}`);
+  }
+
+  createProducto(producto: any): Observable<any> {
+    return this.http.post(`${environment.baseUrl}`, producto);
+  }
+
+  updateProducto(id: number, producto: any): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/articulos/${id}`, producto);
+  }
+
+  deleteProducto(id: number): Observable<any> {
+    return this.http.delete(`${environment.baseUrl}/articulos/${id}`);
+  }
 
 }
