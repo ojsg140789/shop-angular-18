@@ -1,30 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-// import { Auth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
+import { LoginRequest } from '@app/models/login-request';
 import { UserInterface } from '@app/models/user-interface';
-import { from, Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { environment } from '@environments/environment';
+import { Router } from '@angular/router';
+import { Cliente } from '@app/models/cliente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  //firebaeAuth = inject(Auth);
-  //user$ = user(this.firebaeAuth);
-  user$ = sessionStorage.getItem('__user');
-  currentUserSignal = signal<UserInterface | null | undefined >(undefined);
+  http = inject(HttpClient);
+  router = inject(Router);
+  currentUserSignal = signal<string | null | undefined >(undefined);
   
   private user = signal<UserInterface | null>(null);
 
-  // register(username: string, email: string, password: string): Observable<void> {
-  //   const promise = createUserWithEmailAndPassword(this.firebaeAuth, email, password)
-  //     .then(response => updateProfile(response.user, { displayName: username }));
-  //   return from(promise);
-  // }
+  constructor() {
+    // Leer el token de localStorage cuando se inicializa el servicio
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      this.currentUserSignal.set(token); // Establecer el token en el signal si existe
+    }
+  }
 
-  // login( email: string, password: string ): Observable<void> {
-  //   const promise = signInWithEmailAndPassword( this.firebaeAuth, email, password)
-  //     .then(() => {});
-  //   return from(promise);
-  // }
+  register(cliente: Cliente): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/clientes`, cliente);
+  }
+
+  login( loginRequest: LoginRequest ): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/auth/login`, loginRequest).pipe(
+      tap((response: any) => {
+        const token = response.token;
+        if (token) {
+          localStorage.setItem('jwtToken', token);
+          this.currentUserSignal.set(token);
+          this.router.navigate(['/']);
+        }
+      })
+    );
+  }
 
   // logout(): Observable<void> {
   //   const promise = signOut(this.firebaeAuth).then(() => {
@@ -38,7 +54,7 @@ export class AuthService {
   }
 
   getUser() {
-    return this.user();
+    return this.currentUserSignal();
   }
 
   // public onAuthStateChanged(callback: (user: any | null) => void) {

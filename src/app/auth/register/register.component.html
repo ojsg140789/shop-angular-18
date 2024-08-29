@@ -7,13 +7,13 @@
             <div class="card-body">
                 <form class="row g-3 needs-validation" [formGroup]="registerForm" novalidate>
                     <div class="col-md-12">
-                        <label for="validationCustomUsername" class="form-label">Nombre</label>
+                        <label for="validationCustomNombre" class="form-label">Nombre</label>
                         <div class="input-group has-validation">
-                            <input type="text" class="form-control" id="validationCustomUsername"
-                                aria-describedby="inputGroupPrepend" formControlName="username"
+                            <input type="text" class="form-control" id="validationCustomNombre"
+                                aria-describedby="inputGroupPrepend" formControlName="nombre"
                                 autocomplete="off"
-                                [ngClass]="{'is-invalid': registerForm.get('username')?.invalid && registerForm.get('username')?.touched}">
-                                @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
+                                [ngClass]="{'is-invalid': registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched}">
+                                @if(registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched){
                                     <div class="invalid-feedback">
                                         Nombre inválido
                                     </div>
@@ -21,13 +21,41 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="validationCustomEmail" class="form-label">Correo electrónico</label>
+                        <label for="validationCustomApellido" class="form-label">Apellido</label>
                         <div class="input-group has-validation">
-                            <input type="email" class="form-control" id="validationCustomEmail"
-                                aria-describedby="inputGroupPrepend" formControlName="email"
+                            <input type="text" class="form-control" id="validationCustomApellido"
+                                aria-describedby="inputGroupPrepend" formControlName="apellido"
                                 autocomplete="off"
-                                [ngClass]="{'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
-                                @if(registerForm.get('email')?.invalid && registerForm.get('email')?.touched){
+                                [ngClass]="{'is-invalid': registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched}">
+                                @if(registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched){
+                                    <div class="invalid-feedback">
+                                        Apellido inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomDireccion" class="form-label">Direccion</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomDireccion"
+                                aria-describedby="inputGroupPrepend" formControlName="direccion"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': registerForm.get('direccion')?.invalid && registerForm.get('direccion')?.touched}">
+                                @if(registerForm.get('direccion')?.invalid && registerForm.get('direccion')?.touched){
+                                    <div class="invalid-feedback">
+                                        Direccion inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomCorreo" class="form-label">Correo electrónico</label>
+                        <div class="input-group has-validation">
+                            <input type="correo" class="form-control" id="validationCustomCorreo"
+                                aria-describedby="inputGroupPrepend" formControlName="correo"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': registerForm.get('correo')?.invalid && registerForm.get('correo')?.touched}">
+                                @if(registerForm.get('correo')?.invalid && registerForm.get('correo')?.touched){
                                     <div class="invalid-feedback">
                                         Correo inválido
                                     </div>
@@ -43,7 +71,7 @@
                                 [ngClass]="{'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
                                 @if(registerForm.get('password')?.invalid && registerForm.get('password')?.touched){
                                     <div class="invalid-feedback">
-                                        Please choose a password.
+                                        Password inválido
                                     </div>
                                 }
                         </div>

@@ -43,23 +43,23 @@ export class DashboardComponent {
   minCalificacion?: string = '';
 
   ngOnInit() {
-    this.producstsService.getProducts().subscribe({
-      next: products => {
-        this.products = products;
-        this.filteredProducts = this.products;
-      },
-      error: () => {
-        let _message = {
-          title: 'Error',
-          text: 'Ocurrio un error en el servicio'
-        }
-        Swal.fire({
-          title: _message.title,
-          text: _message.text,
-          icon: 'info'
-        });
-      }
-    });
+    // this.producstsService.getProducts().subscribe({
+    //   next: products => {
+    //     this.products = products;
+    //     this.filteredProducts = this.products;
+    //   },
+    //   error: () => {
+    //     let _message = {
+    //       title: 'Error',
+    //       text: 'Ocurrio un error en el servicio'
+    //     }
+    //     Swal.fire({
+    //       title: _message.title,
+    //       text: _message.text,
+    //       icon: 'info'
+    //     });
+    //   }
+    // });
   }
 
   filterProducts(

@@ -31,25 +31,25 @@ export class ProductDetailComponent {
   };
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.productService.getProductById(this.id).subscribe({
-        next: (product) => {
-          this.product = product;
-        },
-        error: () => {
-          let _message = {
-            title: 'Error',
-            text: 'Ocurrio un error en el servicio'
-          }
-          Swal.fire({
-            title: _message.title,
-            text: _message.text,
-            icon: 'info'
-          });
-        }
-      });
-    });
+    // this.route.params.subscribe(params => {
+    //   this.id = params['id'];
+    //   this.productService.getProductById(this.id).subscribe({
+    //     next: (product) => {
+    //       this.product = product;
+    //     },
+    //     error: () => {
+    //       let _message = {
+    //         title: 'Error',
+    //         text: 'Ocurrio un error en el servicio'
+    //       }
+    //       Swal.fire({
+    //         title: _message.title,
+    //         text: _message.text,
+    //         icon: 'info'
+    //       });
+    //     }
+    //   });
+    // });
   }
 
   agregarCarrito( product: Product) {
