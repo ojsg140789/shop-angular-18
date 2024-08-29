@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductsService } from '@app/services/products.service';
 import { Product } from '@app/models/product';
 import { ProductItemComponent } from "../../components/product-item/product-item.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,7 @@ import { ProductItemComponent } from "../../components/product-item/product-item
 export class DashboardComponent {
 
   producstsService = inject(ProductsService);
-
+  router = inject(Router);
   products: Product[] = [];
   
 
@@ -40,5 +41,13 @@ export class DashboardComponent {
         });
       }
     });
+  }
+
+  tiendas() {
+    this.router.navigate(['/tiendas']);
+  }
+
+  producto() {
+    this.router.navigate(['/producto', '']);
   }
 }

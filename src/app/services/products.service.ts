@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Product } from '@app/models/product';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
@@ -22,7 +21,7 @@ export class ProductsService {
   }
 
   createProducto(producto: any): Observable<any> {
-    return this.http.post(`${environment.baseUrl}`, producto);
+    return this.http.post(`${environment.baseUrl}/articulos`, producto);
   }
 
   updateProducto(id: number, producto: any): Observable<any> {

@@ -38,6 +38,34 @@ export const routes: Routes = [
                 .then(m => m.CartComponent),
         canActivate: [authGuard]                
     },
+    {
+        path: 'tiendas',
+        loadComponent: () => 
+            import('./pages/tiendas/tiendas.component')
+                .then(m => m.TiendasComponent),
+        canActivate: [authGuard]                
+    },
+    {
+        path: 'tienda/:id',
+        loadComponent: () => 
+            import('./pages/tienda/tienda.component')
+                .then(m => m.TiendaComponent),
+        canActivate: [authGuard]                
+    },
+    {
+        path: 'producto/:id',
+        loadComponent: () => 
+            import('./pages/producto/producto.component')
+                .then(m => m.ProductoComponent),
+        canActivate: [authGuard]                
+    },
+    {
+        path: 'cliente/:id',
+        loadComponent: () => 
+            import('./pages/cliente/cliente.component')
+                .then(m => m.ClienteComponent),
+        canActivate: [authGuard]                
+    },
     { path: '',   redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', component: NoPageFoundComponent }
 ];

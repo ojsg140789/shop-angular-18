@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 my-1 text-end">
+        <button type="button" class="btn btn-secondary me-2" (click)="irTienda()">Agregar Tienda</button>
+    </div>
+    <div class="col-md-12 col-sm-12 my-1">
+        <h3>Tiendas</h3>
+    </div>
+    <div class="col-md-12">
+        <a type="button" class="btn btn-link" href="javascript:void(0)" (click)="goBack();">Regresar</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sucursal</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for( tienda of tiendas; track tienda.id) {
+                <tr>
+                    <td>{{tienda.sucursal}}</td>
+                    <td>{{tienda.direccion}}</td>
+                    <td>
+                        <button type="button" class="btn btn-secondary me-2" (click)="editar(tienda.id)">Editar</button>
+                        <button type="button" class="btn btn-primary" (click)="eliminar(tienda.id)">Eliminar</button>
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>

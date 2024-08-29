@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { LoginRequest } from '@app/models/login-request';
-import { UserInterface } from '@app/models/user-interface';
 import { Observable, tap } from 'rxjs';
 import { environment } from '@environments/environment';
 import { Router } from '@angular/router';
@@ -14,8 +13,7 @@ export class AuthService {
   http = inject(HttpClient);
   router = inject(Router);
   currentUserSignal = signal<string | null | undefined >(undefined);
-  
-  private user = signal<UserInterface | null>(null);
+  user = signal<Cliente | null>(null);
 
   constructor() {
     const user = localStorage.getItem('jwtToken');
@@ -44,10 +42,6 @@ export class AuthService {
     localStorage.removeItem('jwtToken');
     this.currentUserSignal.set(null);
     this.router.navigate(['/login']);
-  }
-
-  isLoggedIn() {
-    return this.user() !== null;
   }
 
   getUser() {

@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 mx-auto col-width-auto text-center">
+        <div id="card" class="card text-center">
+            <div class="card-header">
+                Tienda
+            </div>
+            <div class="card-body">
+                <form class="row g-3 needs-validation" [formGroup]="tiendaForm" novalidate>
+                    <div class="col-md-12">
+                        <label for="validationCustomSucursal" class="form-label">Sucursal</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomSucursal"
+                                aria-describedby="inputGroupPrepend" formControlName="sucursal"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': tiendaForm.get('sucursal')?.invalid && tiendaForm.get('sucursal')?.touched}">
+                                @if(tiendaForm.get('sucursal')?.invalid && tiendaForm.get('sucursal')?.touched){
+                                    <div class="invalid-feedback">
+                                        Sucursal inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="validationCustomDireccion" class="form-label">Direccion</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationCustomDireccion"
+                                aria-describedby="inputGroupPrepend" formControlName="direccion"
+                                autocomplete="off"
+                                [ngClass]="{'is-invalid': tiendaForm.get('direccion')?.invalid && tiendaForm.get('direccion')?.touched}">
+                                @if(tiendaForm.get('direccion')?.invalid && tiendaForm.get('direccion')?.touched){
+                                    <div class="invalid-feedback">
+                                        Direccion inválido
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-secondary" (click)="guardar()" [disabled]="tiendaForm.invalid">Guardar</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-link" href="javascript:void(0)" [routerLink]="['/tiendas']">Regresar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
